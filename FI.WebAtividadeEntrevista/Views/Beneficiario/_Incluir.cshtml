@@ -1,0 +1,54 @@
+﻿@model WebAtividadeEntrevista.Models.BeneficiarioModel
+@{
+    Layout = null;
+
+}
+
+@Scripts.Render("~/bundles/Beneficiario");
+@Scripts.Render("~/bundles/bootstrap");
+<div class="modal-dialog">
+
+    <div class="modal-content">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmBeneficiario" }))
+        {
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">@ViewBag.Title</h4>
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        @if (ViewBag.op == "UPD"){
+                            @Html.HiddenFor(model => model.Id, new { value = 99 })
+                        }
+                        @Html.HiddenFor(model => model.IdCliente)
+                        <div class="">
+                            @Html.LabelFor(model => model.Cpf, new { @class = "control-label col-md-3" })
+
+                            @Html.TextBoxFor(model => model.Cpf, new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.Cpf)
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="">
+                            @Html.LabelFor(model => model.Nome, new { @class = "control-label col-md-3" })
+
+                            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.Nome)
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default btn-success"> Salvar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

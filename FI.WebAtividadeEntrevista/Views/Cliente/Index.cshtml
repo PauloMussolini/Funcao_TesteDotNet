@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Clientes";
+}
+@section scripts{
+    <script>
+        var urlAlteracao = '@Url.Action("Alterar", "Cliente", new { area = "" })';
+        var urlAlteracaoBenef = '@Url.Action("Alterar", "Beneficiario", new { area = "" })';
+        var urlClienteList = '@Url.Action("ClienteList", "Cliente", new { area = "" })';
+        var urlBeneficiarioList = '@Url.Action("BeneficiarioList", "Beneficiario", new { idCliente = 0, Area = ""  })';
+    </script>
+    @Scripts.Render("~/bundles/listClientes")
+}
+<h2>@Html.Raw(ViewBag.Title)</h2>
+@Html.ActionLink("Novo Cliente", "Incluir", "Cliente", new { }, new { @class = "btn btn-sm btn-primary pull-right" })
+<table id="gridClientes" class="table"></table>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="pull-left">
+            <button class="btn btn-sm btn-disabled" id="btnIncluiBenef" >Incluir Beneficiário</button>
+        </div>
+    </div>
+</div>
+
+
+
+<table id="gridBeneficiarios" class="table"></table>
+
+<div class="modal" id="modalBeneficiario">
+
+</div>
